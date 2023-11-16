@@ -17,6 +17,12 @@ centros_no_reglados = pd.read_csv(file_in)
 file_in = "Input_Data/gross_income.csv"
 renta_promedio = pd.read_csv(file_in)
 
+file_in = "Input_Data/2021_pad_mdbas_sexe.csv"
+poblacion_barcelona_sexo = pd.read_csv(file_in)
+
+file_in = "Input_Data/2021_pad_mdba_sexe_edat-1.csv"
+poblacion_barcelona_sexo_edat = pd.read_csv(file_in)
+
 # Hacemos dataset unificado de centros
 centros_info = pd.concat([centros_no_reglados,centros_reglados])
 centros_info.to_csv('Input_Data\centros_unificados.csv', index=False)  
@@ -32,6 +38,9 @@ df_unificado = df_unificado.drop(['addresses_road_name','addresses_start_street_
                                   'addresses_district_name', 'addresses_district_id',
                                   'neighborhood_name', 'neighborhood_code', 'gross_income'], axis=1)
 
+# extraemos el numero de habitantes para cada distrito
+poblacion_barcelona_sexo['density_population'] = poblacion_barcelona_sexo.groupby('Codi_Districte')['Valor'].transform('sum')
+poblacion_barcelona_sexo_edat['density_population'] = poblacion_barcelona_sexo_edat.groupby('Codi_Districte')['Valor'].transform('sum')
 
 # Nos aseguramos que los centros no se repitan para cada distrito. (Para eso, actualizar variable secondary_filters_name para que contega 
 # todos los valores posibles para cada distrito)
@@ -41,6 +50,14 @@ df_unificado = df_unificado.drop_duplicates()
 df_unificado['secondary_filters_name'] = df_unificado['secondary_filters_name'].str.split(', ')
 
 
+
+'''
+# educational_occupational_ranking -> porcentage por 100. integuer
+# density_population : Number. -> S'ha d'extreure a nivell de districte.
+# ocupation -> ARRAY . numero de gent que esta estudiant,
+# work_ocupatation -> dict: gente aturada , no aturada. tenim dataset d'atur occupated / not occupated. Numbers
+# age_population:  interval_0_2 , interval_3_5,  interval_6_12, interval_13_15, interval_16_18, 
+# interval_19_25, interval_26_30, interval_31_40, interval_41_50, interval_51_70, interval_70_up. dictionary.
 
 # Generamos el JSON en el formato adecuado para backend
 json_unificado = (
@@ -54,6 +71,6 @@ json_unificado = (
     .to_json(orient='records')
 )
 
-
 with open('Input_Data\df_district_information.json', 'w') as f:
     f.write(json_unificado)
+'''
