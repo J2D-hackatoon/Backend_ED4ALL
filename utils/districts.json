@@ -1,0 +1,62 @@
+[
+  {
+    "district_name": "Ciutat Vella",
+    "avg_income": 35538.6927347462,
+    "district_code": 1,
+    "centers": []
+  },
+  {
+    "district_name": "L'Eixample",
+    "avg_income": 63053.0156919716,
+    "district_code": 2,
+    "centers": []
+  },
+  {
+    "district_name": "Sants-Montjuic",
+    "avg_income": 44208.8437911097,
+    "district_code": 3,
+    "centers": []
+  },
+  {
+    "district_name": "Les Corts",
+    "avg_income": 84402.2268057785,
+    "district_code": 4,
+    "centers": []
+  },
+  {
+    "district_name": "Sarria-Sant Gervasi",
+    "avg_income": 99781.2133405675,
+    "district_code": 5,
+    "centers": []
+  },
+  {
+    "district_name": "Gracia",
+    "avg_income": 56619.4895918367,
+    "district_code": 6,
+    "centers": []
+  },
+  {
+    "district_name": "Horta-Guinardo",
+    "avg_income": 47735.0346407686,
+    "district_code": 7,
+    "centers": []
+  },
+  {
+    "district_name": "Nou Barris",
+    "avg_income": 37181.6429039105,
+    "district_code": 8,
+    "centers": []
+  },
+  {
+    "district_name": "Sant Andreu",
+    "avg_income": 45410.3399723948,
+    "district_code": 9,
+    "centers": []
+  },
+  {
+    "district_name": "Sant Marti",
+    "avg_income": 51688.8777801599,
+    "district_code": 10,
+    "centers": []
+  }
+]
