@@ -1,4 +1,5 @@
 import { DistrictRepository } from '../repository/district.js'
+import { CenterRepository } from '../repository/center.js'
 
 export class DistrictController {
   static async getAllDistricts(req, res) {
@@ -12,14 +13,45 @@ export class DistrictController {
 
   static async getAllCentersInDistrict(req, res) {
     try {
+      const pageNumber = parseInt(req.query.pageNumber) || 0
+      const limit = parseInt(req.query.limit) || 12
+      const result = {}
+
       const districtId = req.params.districtId
-      const centers = await DistrictRepository.getAllCentersInDistrict(
-        districtId
+      // const totalCenters = await DistrictRepository.getAllCentersInDistrict(
+      //   districtId
+      // )
+
+      const startIndex = pageNumber * limit
+      const endIndex = (pageNumber + 1) * limit
+
+      // result.totalCenters = totalCenters
+      if (startIndex > 0) {
+        result.previous = {
+          pageNumber: pageNumber - 1,
+          limit
+        }
+      }
+
+      if (endIndex < (await CenterRepository.getCountCenters())) {
+        result.next = {
+          pageNumber: pageNumber + 1,
+          limit
+        }
+      }
+
+      result.data = await CenterRepository.getCentersByPagination(
+        districtId,
+        startIndex,
+        limit
       )
-      if (!centers) {
+
+      if (!result.data) {
         return res.status(404).json({ message: 'District not found' })
       }
-      return res.status(200).json(centers)
+
+      result.rowsPerPage = limit
+      return res.status(200).json(result)
     } catch (error) {
       res.status(500).json({ message: error.message })
     }
