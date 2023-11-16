@@ -6,7 +6,7 @@ import { districtsRouter } from './routes/districts.js'
 import { centersRouter } from './routes/centers.js'
 // import { corsMiddleware } from './middlewares/cors.js'
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 
 const app = express()
 app.disable('x-powered-by')
