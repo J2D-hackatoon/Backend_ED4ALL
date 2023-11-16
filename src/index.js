@@ -1,9 +1,9 @@
 import express, { json } from 'express'
 import { Mongo } from '../db/mongo.js'
-// import mongoose from 'mongoose'
+import cors from 'cors'
 import morgan from 'morgan'
 import { districtsRouter } from './routes/districts.js'
-import { corsMiddleware } from './middlewares/cors.js'
+// import { corsMiddleware } from './middlewares/cors.js'
 
 const PORT = process.env.PORT ?? 3001
 
@@ -12,7 +12,8 @@ app.disable('x-powered-by')
 
 // Middlewares
 app.use(json())
-app.use(corsMiddleware())
+app.use(cors('*'))
+// app.use(corsMiddleware())
 app.use(morgan('dev'))
 
 // Routes
