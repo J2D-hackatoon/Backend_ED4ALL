@@ -10,9 +10,4 @@ export class CenterRepository {
     const result = await Center.findById(id)
     return result
   }
-
-    static async getAllCentersInDistrict(districtId) {
-        const result = await Center.find({ district_id: districtId })
-        return result
-    }
 }

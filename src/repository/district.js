@@ -8,12 +8,12 @@ export class DistrictRepository {
   }
 
   static async getAllCentersInDistrict(districtId) {
-    const district = await DistrictSchema.findOne({ district_id: districtId }).populate('centers')
+    const district = await DistrictSchema.findOne({ district_code: districtId }).populate('centers')
     return district.centers
   }
 
   static async getDistrictByDistrictId(districtId) {
-    const result = await DistrictSchema.findOne({ district_id: districtId })
+    const result = await DistrictSchema.findOne({ district_code: districtId })
     return result
   }
 }
