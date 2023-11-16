@@ -1,4 +1,6 @@
 import express, { json } from 'express'
+import { Mongo } from '../db/mongo.js'
+// import mongoose from 'mongoose'
 import morgan from 'morgan'
 import { districtsRouter } from './routes/districts.js'
 import { corsMiddleware } from './middlewares/cors.js'
@@ -21,6 +23,8 @@ app.use((req, res) => {
 })
 
 // Server listening
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server listening on port http://localhost:${PORT}`)
+  await Mongo.init()
+  console.log('Connected to database!')
 })
