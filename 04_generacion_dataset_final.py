@@ -38,6 +38,10 @@ df_unificado = df_unificado.drop(['addresses_road_name','addresses_start_street_
 df_unificado['secondary_filters_name'] = df_unificado.groupby('name')['secondary_filters_name'].transform(lambda x: ', '.join(x))
 df_unificado = df_unificado.drop_duplicates()
 
+df_unificado['secondary_filters_name'] = df_unificado['secondary_filters_name'].str.split(', ')
+
+
+
 # Generamos el JSON en el formato adecuado para backend
 json_unificado = (
     df_unificado.groupby(['district_name', 'avg_income', 'district_code'])
@@ -49,6 +53,7 @@ json_unificado = (
     .rename(columns={0: 'centers'})
     .to_json(orient='records')
 )
+
 
 with open('Input_Data\df_district_information.json', 'w') as f:
     f.write(json_unificado)
