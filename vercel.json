@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "ed4all",
+    "builds": [
+      { "src": "package.json", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/" }
+    ]
+  }
