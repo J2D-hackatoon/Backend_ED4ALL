@@ -1,5 +1,7 @@
 # DataScience
 
+### Generation of educational risk indicator:
+
 To implement a tool that enables end users to modify specific parameters and assess the inclusivity and quality of education per district,
 we have to define a metric which evaluates that inclusivity and quality for each of the districts of Barcelona. See that since we have a dataset containing educational and occupational
 information of people living in Barcelona, we will define the educational and occupational index of a district as the average of the individual educational and occupational
