@@ -1,13 +1,12 @@
 import fs from 'fs'
-import mongoose from 'mongoose'
 import Center from '../src/schemas/center.js'
 import District from '../src/schemas/district.js'
-
-mongoose.connect('mongodb+srv://test1:team1@cluster0.zrplbre.mongodb.net/ed_4_all?authSource=admin')
+import { Mongo } from './mongo.js'
 
 async function seedData() {
   try {
-    const data = fs.readFileSync('./df_district_information.json', 'utf8')
+    await Mongo.init()
+    const data = fs.readFileSync('./df_district_information.json', 'utf8') // Be careful with the path
     const districts = JSON.parse(data)
 
     for (const districtData of districts) {
