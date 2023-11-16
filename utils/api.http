@@ -1,5 +1,15 @@
-### Devuelve una lista de todos los distritos con su id y nombre
+### Return array de todos los objetos districts (cada district  tiene un array de objetos centers)
 GET http://localhost:3001/districts
 
-### 
-GET http://localhost:3001/districts/1
+### Return objeto district "y este tiene un array de objetos centers", según <district_code> específico
+GET http://localhost:3001/districts/4
+
+### Return una lista de objetos centers segun id del districts
+GET http://localhost:3001/districts/4/centers
+
+### Return una lista de objetos centers
+GET http://localhost:3001/centers
+
+### Return objeto centers según _id específico
+GET http://localhost:3001/centers/65564b5d80935cab8bcac036
+
