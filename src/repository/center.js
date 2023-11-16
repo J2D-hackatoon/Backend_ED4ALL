@@ -12,8 +12,7 @@ export class CenterRepository {
   }
 
   static async getCentersByPagination(districtId, startIndex, limit) {
-    const result = CenterSchema.find()
-      // const result = CenterSchema.find({ district_code: districtId })
+    const result = CenterSchema.find({ district_code: districtId })
       .sort('-_id')
       .skip(startIndex)
       .limit(limit)

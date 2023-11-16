@@ -9,7 +9,7 @@ const CenterSchema = new mongoose.Schema({
   addresses_neighborhood_name: { type: String, require: true },
   addresses_district_name: { type: String, require: true },
   phone_number: { type: String, require: true },
-  secondary_filters_name: { type: String, require: true },
+  secondary_filters_name: [[String]],
   latitude: { type: Number, require: true },
   longitude: { type: Number, require: true }
 })
