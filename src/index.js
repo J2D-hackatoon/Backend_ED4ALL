@@ -1,10 +1,10 @@
-import express, { json } from "express";
-import { Mongo } from "../db/mongo.js";
-// import mongoose from 'mongoose'
-import morgan from "morgan";
-import { districtsRouter } from "./routes/districts.js";
+import express, { json } from 'express'
+import { Mongo } from '../db/mongo.js'
+import cors from 'cors'
+import morgan from 'morgan'
+import { districtsRouter } from './routes/districts.js'
 import { centersRouter } from "./routes/center.js";
-import { corsMiddleware } from "./middlewares/cors.js";
+// import { corsMiddleware } from './middlewares/cors.js'
 
 const PORT = process.env.PORT ?? 3001;
 
@@ -12,9 +12,10 @@ const app = express();
 app.disable("x-powered-by");
 
 // Middlewares
-app.use(json());
-app.use(corsMiddleware());
-app.use(morgan("dev"));
+app.use(json())
+app.use(cors('*'))
+// app.use(corsMiddleware())
+app.use(morgan('dev'))
 
 // Routes
 app.use("/districts", districtsRouter);
