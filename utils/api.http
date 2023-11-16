@@ -1,0 +1,2 @@
+### Devuelve una lista de todos los distritos con su id y nombre
+GET http://localhost:3001/districts
