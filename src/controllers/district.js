@@ -1,6 +1,6 @@
-import { DistrictModel } from '../models/district.js'
+import { DistrictModel } from '../repository/district.js'
 
-export class SkinController {
+export class DistrictController {
   static async getAllDistricts(req, res) {
     try {
       const districts = await DistrictModel.getAllDistricts()
