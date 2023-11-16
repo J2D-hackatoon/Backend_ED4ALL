@@ -6,4 +6,14 @@ export class DistrictRepository {
     console.log(result)
     return result
   }
+
+  static async getAllCentersInDistrict(districtId) {
+    const district = await DistrictSchema.findOne({ district_id: districtId }).populate('centers')
+    return district.centers
+  }
+
+  static async getDistrictByDistrictId(districtId) {
+    const result = await DistrictSchema.findOne({ district_id: districtId })
+    return result
+  }
 }

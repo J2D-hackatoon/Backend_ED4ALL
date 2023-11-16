@@ -17,6 +17,7 @@ app.use(morgan('dev'))
 
 // Routes
 app.use('/districts', districtsRouter)
+app.use('/centers', districtsRouter)
 
 app.use((req, res) => {
   res.status(404).send('404 - Not Found')
