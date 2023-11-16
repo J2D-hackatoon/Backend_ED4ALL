@@ -4,7 +4,7 @@ export class CenterController {
   static async getAllCenters(req, res) {
     try {
       const centers = await CenterRepository.getAllCenters()
-      return res.json(centers)
+      return res.json(centers || [])
     } catch (error) {
       res.status(500).json({ message: error.message })
     }
@@ -14,7 +14,10 @@ export class CenterController {
     try {
       const id = req.params.id
       const center = await CenterRepository.getCenterById(id)
-      return res.json(center)
+      if (!center) {
+        return res.status(404).json({ message: 'Center not found' })
+      }
+      return res.status(200).json(center)
     } catch (error) {
       res.status(500).json({ message: error.message })
     }
