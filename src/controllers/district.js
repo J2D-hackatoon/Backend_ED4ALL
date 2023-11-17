@@ -71,4 +71,18 @@ export class DistrictController {
       res.status(500).json({ message: error.message })
     }
   }
+
+  static async updateDistrictById(req, res) {
+    try {
+      const id = req.params.id
+      const data = req.body
+      const district = await DistrictRepository.updateDistrictById(id, data)
+      if (!district) {
+        return res.status(404).json({ message: 'District not found' })
+      }
+      return res.status(200).json(district)
+    } catch (error) {
+      res.status(500).json({ message: error.message })
+    }
+  }
 }

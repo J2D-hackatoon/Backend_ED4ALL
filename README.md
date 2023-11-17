@@ -27,11 +27,14 @@ This project exposes several API endpoints that you can use to interact with the
 - `GET /districts`: This endpoint returns all districts. It doesn't require any parameters.
 - `GET /districts/:districtId`: This endpoint returns a specific district by its ID. You need to replace `:districtId` with the ID of the district you want to retrieve.
 - `GET /districts/:districtId/centers`: This endpoint returns all centers in a specific district. You need to replace `:districtId` with the ID of the district whose centers you want to retrieve.
+- `PUT /districts/:districtId`: This endpoint updates a specific district by its ID. You need to replace `:districtId` with the ID of the district you want to update. You also need to send the new data in the request body in JSON format.
 
 ### Center Routes
 
 - `GET /centers`: This endpoint returns all centers. It doesn't require any parameters.
 - `GET /centers/:id`: This endpoint returns a specific center by its ID. You need to replace `:id` with the ID of the center you want to retrieve.
+- `PUT /centers/:id`: This endpoint updates a specific center by its ID. You need to replace `:id` with the ID of the center you want to update. You also need to send the new data in the request body in JSON format.
+- `POST /centers`: This endpoint creates a new center. You need to send the new data in the request body in JSON format.
 
 All endpoints return data in JSON format. If an endpoint cannot find the requested data, it will return a 404 status code with the message '404 - Not Found'.
 

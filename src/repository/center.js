@@ -24,4 +24,16 @@ export class CenterRepository {
     const result = CenterSchema.countDocuments().exec()
     return result
   }
+
+  static async updateCenterById(id, data) {
+    const result = await CenterSchema.findByIdAndUpdate(id, data, {
+      new: true
+    })
+    return result
+  }
+
+  static async insertCenter(data) {
+    const result = await CenterSchema.create(data)
+    return result
+  }
 }

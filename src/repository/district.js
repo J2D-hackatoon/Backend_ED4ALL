@@ -18,4 +18,11 @@ export class DistrictRepository {
     const result = await DistrictSchema.findOne({ district_code: districtId })
     return result
   }
+
+  static async updateDistrictById(districtCode, data) {
+    const result = await DistrictSchema.findOneAndUpdate({ district_code: districtCode }, data, {
+      new: true
+    })
+    return result
+  }
 }
